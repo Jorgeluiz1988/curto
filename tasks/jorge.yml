@@ -1,0 +1,10 @@
+  ---
+  - hosts: exemplo
+    remote_user: root
+    task:
+  - name: Install list of packages
+    apt: name={{item}} state=installed
+    with_items:
+       - update
+       - upgrade
+       
