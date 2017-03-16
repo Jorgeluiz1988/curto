@@ -1,0 +1,12 @@
+---
+- hosts: exemplo
+  remote_user: root
+  tasks:
+  - name: Add the key used to Nginx pkg
+    apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+ 
+  - name: Add repository for install Nginx
+    copy: src=nginx.list dest=/etc/apt/sources.list.d/
+
+  - name: Update packages and install Nginx
+    apt: name=nginx update_cache=yes
